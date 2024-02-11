@@ -6,14 +6,43 @@
   <title>Valentine's Details</title>
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    #play-music-btn {
+      background-color: #ff4d4d;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+      font-family: 'Pacifico', cursive;
+    }
+
+    #play-music-btn:hover {
+      background-color: #ff6666;
+    }
+  </style>
 </head>
 <body>
-  <!-- Background Music -->
-  <audio id="bg-music" autoplay loop preload="auto">
-    <source src="L-O-V-E.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
-
   <div class="container" id="valentine-question">
     <h1 id="caption">Would you be my Valentine?</h1>
     <div class="button-container" id="button-container">
@@ -34,7 +63,7 @@
   <div class="container" id="venue-page" style="display: none;">
     <h1 id="venue-caption">Venue</h1>
     <p>Where: Home</p>
-    <p>When: 1pm(depending on the traffic🚙)</p>
+    <p>When: 1pm (depending on the traffic 🚙)</p>
     <p>What: Food & Movie Date</p>
     <div id="venue-next-container">
       <button class="btn" onclick="showVideoPage()">Next</button>
@@ -55,9 +84,30 @@
   <div class="container" id="see-you-page" style="display: none;">
     <h1 id="see-you-caption">See you</h1>
   </div>
-  
+
+  <!-- Background Music -->
+  <div id="play-music-container">
+    <audio id="bg-music" loop preload="auto">
+      <source src="music.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <button id="play-music-btn" onclick="toggleMusic()">Click me!</button>
+  </div>
 
   <script>
+    var bgMusic = document.getElementById('bg-music');
+    var playBtn = document.getElementById('play-music-btn');
+    
+    function toggleMusic() {
+      if (bgMusic.paused) {
+        bgMusic.play();
+        playBtn.textContent = "🎵";
+      } else {
+        bgMusic.pause();
+        playBtn.textContent = "Click me!";
+      }
+    }
+
     function hideButtons() {
       document.getElementById('button-container').style.display = 'none';
       document.getElementById('caption').innerHTML = '😊 ❤️'; // Smiley face and heart
@@ -69,15 +119,16 @@
       document.getElementById('venue-page').style.display = 'block';
       document.getElementById('valentine-question').style.display = 'none';
     }
-    function showVideoPage() {
-  document.getElementById('venue-page').style.display = 'none';
-  document.getElementById('video-page').style.display = 'block';
-}
 
-function showSeeYouPage() {
-  document.getElementById('video-page').style.display = 'none';
-  document.getElementById('see-you-page').style.display = 'block';
-}
+    function showVideoPage() {
+      document.getElementById('venue-page').style.display = 'none';
+      document.getElementById('video-page').style.display = 'block';
+    }
+
+    function showSeeYouPage() {
+      document.getElementById('video-page').style.display = 'none';
+      document.getElementById('see-you-page').style.display = 'block';
+    }
   </script>
 </body>
 </html>
