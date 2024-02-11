@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentine's Details</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Background Music -->
+  <audio id="bg-music" autoplay loop preload="auto">
+    <source src="L-O-V-E.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <div class="container" id="valentine-question">
+    <h1 id="caption">Would you be my Valentine?</h1>
+    <div class="button-container" id="button-container">
+      <button class="btn" onclick="hideButtons()">Yes</button>
+      <button class="btn" onclick="hideButtons()">Yes (You have no choice but to say yes)</button>
+    </div>
+    <div id="date-container" style="display: none;">
+      <p>Are you free on:</p>
+      <select id="date-dropdown">
+        <option value="2024-02-14">February 14, 2024</option>
+      </select>
+      <div id="next-container">
+        <button class="btn" onclick="showVenuePage()">Next</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" id="venue-page" style="display: none;">
+    <h1 id="venue-caption">Venue</h1>
+    <p>Where: Home</p>
+    <p>When: 1pm(depending on the traffic🚙)</p>
+    <p>What: Food & Movie Date</p>
+    <div id="venue-next-container">
+      <button class="btn" onclick="showSeeYouPage()">Next</button>
+    </div>
+  </div>
+
+  <div class="container" id="see-you-page" style="display: none;">
+    <h1 id="see-you-caption">See you</h1>
+  </div>
+
+  <script>
+    function hideButtons() {
+      document.getElementById('button-container').style.display = 'none';
+      document.getElementById('caption').innerHTML = '😊 ❤️'; // Smiley face and heart
+      document.getElementById('date-container').style.display = 'block';
+    }
+
+    function showVenuePage() {
+      document.getElementById('date-container').style.display = 'none';
+      document.getElementById('venue-page').style.display = 'block';
+      document.getElementById('valentine-question').style.display = 'none';
+    }
+
+    function showSeeYouPage() {
+      document.getElementById('venue-page').style.display = 'none';
+      document.getElementById('see-you-page').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
