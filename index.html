@@ -37,13 +37,25 @@
     <p>When: 1pm(depending on the traffic🚙)</p>
     <p>What: Food & Movie Date</p>
     <div id="venue-next-container">
+      <button class="btn" onclick="showVideoPage()">Next</button>
+    </div>
+  </div>
+  
+  <div class="container" id="video-page" style="display: none;">
+    <h1 id="video-caption">you set my soul on fire 💕</h1>
+    <video controls>
+      <source src="videoplayback.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div id="video-next-container">
       <button class="btn" onclick="showSeeYouPage()">Next</button>
     </div>
   </div>
-
+  
   <div class="container" id="see-you-page" style="display: none;">
     <h1 id="see-you-caption">See you</h1>
   </div>
+  
 
   <script>
     function hideButtons() {
@@ -57,11 +69,15 @@
       document.getElementById('venue-page').style.display = 'block';
       document.getElementById('valentine-question').style.display = 'none';
     }
+    function showVideoPage() {
+  document.getElementById('venue-page').style.display = 'none';
+  document.getElementById('video-page').style.display = 'block';
+}
 
-    function showSeeYouPage() {
-      document.getElementById('venue-page').style.display = 'none';
-      document.getElementById('see-you-page').style.display = 'block';
-    }
+function showSeeYouPage() {
+  document.getElementById('video-page').style.display = 'none';
+  document.getElementById('see-you-page').style.display = 'block';
+}
   </script>
 </body>
 </html>
